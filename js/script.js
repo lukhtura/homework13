@@ -8,15 +8,11 @@ function Clock() {
         let date = new Date();
         let hours = date.getHours();
         if (hours < 10) {
-            if (hours < 10) {
-                hours = '0' + hours;
-            }
+            hours = '0' + hours;
         }
         let minutes = date.getMinutes();
         if (minutes < 10) {
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
+            minutes = '0' + minutes;
         }
         let seconds = date.getSeconds();
         if (seconds < 10) {
@@ -26,13 +22,12 @@ function Clock() {
     }
     this.start = function () {
         this.render();
-        timer = setInterval(this.render, 1000)
+        this.timer = setInterval(this.render, 1000);
     }
-
 }
 
 Clock.prototype.stop = function () {
-    clearInterval(timer)
+    clearInterval(this.timer);
 }
 
 let clock = new Clock();

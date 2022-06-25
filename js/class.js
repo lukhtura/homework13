@@ -9,15 +9,11 @@ class Clock {
             let date = new Date();
             let hours = date.getHours();
             if (hours < 10) {
-                if (hours < 10) {
-                    hours = '0' + hours;
-                }
+                hours = '0' + hours;
             }
             let minutes = date.getMinutes();
             if (minutes < 10) {
-                if (minutes < 10) {
-                    minutes = '0' + minutes;
-                }
+                minutes = '0' + minutes;
             }
             let seconds = date.getSeconds();
             if (seconds < 10) {
@@ -27,11 +23,11 @@ class Clock {
         }
     }
     start() {
-        this.render()
-        this.timer = setInterval(this.render, 1000)
+        this.render();
+        this.timer = setInterval(this.render, 1000);
     }
     stop() {
-        clearInterval(this.timer)
+        clearInterval(this.timer);
     }
 }
 
