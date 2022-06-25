@@ -3,10 +3,9 @@ const stopButton = document.querySelector('.stop-button');
 const clockArea = document.querySelector('.clock-area');
 
 function Clock() {
+    this.timer = undefined;
     this.render = function () {
-        let timer = undefined;
         let date = new Date();
-
         let hours = date.getHours();
         if (hours < 10) {
             if (hours < 10) {
@@ -25,21 +24,20 @@ function Clock() {
         }
         clockArea.innerHTML = (`${hours}:${minutes}:${seconds}`);
     }
-
     this.start = function () {
         this.render();
         timer = setInterval(this.render, 1000)
     }
+
 }
 
+Clock.prototype.stop = function () {
+    clearInterval(timer)
+}
 
 let clock = new Clock();
-console.log(clock)
-clock.start();
+const bindStart = clock.start.bind(clock);
+const bindStop = clock.stop.bind(clock);
 
-
-
-
-
-// startButton.addEventListener('click', clock.start);
-// stopButton.addEventListener('click', clock.stop);
+startButton.addEventListener('click', bindStart);
+stopButton.addEventListener('click', bindStop);
